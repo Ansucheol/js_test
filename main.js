@@ -56,5 +56,15 @@ const daughtersCar = new Car('포르쉐',4,false)
 console.log(myCar)
 console.log(daughtersCar)
 */
+/*
+const btnEL = document.querySelector('#btn_test');
 
+btnEL.addEventListener('click',function(){
+    alert('테스트 시작')
+})
+
+
+
+const result='Hello world!'.indexOf('Heropy')
+console.log(result)*/
 
