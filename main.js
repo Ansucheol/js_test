@@ -417,7 +417,7 @@ const obj = JSON.parse(str)
 console.log('obj', obj)
 */
 //----------------------------------------------------------
-
+/*
 //stroge(데이터 저장소)
 //localStorage의 데이터는 만료되지 않고 sessionStorage의 데이터는 페이지 세션이 끝날 때, 
 //즉 페이지를 닫을 때 사라지는 점이 다릅니다.
@@ -437,3 +437,23 @@ obj.age =22
 console.log(obj)
 
 localStorage.setItem('user',JSON.stringify(obj))
+*/
+
+//---------------------------------------------------------------------------
+
+//OMBD API
+import axios from 'axios'
+
+function fetchMovies() {
+    axios
+    .get('https://www.omdbapi.com/?apikey=7035c60c&s=frozen') //데이터 요청!
+    .then(res =>{ //then 메소드의 콜벡함수 사용!
+        
+        console.log(res)
+        const h1El =document.querySelector('h1')
+        const imgEl = document.querySelector('img')
+        h1El.textContent = res.data.Search[0].Title
+        imgEl.src =res.data.Search[0].Poster
+    })
+}
+fetchMovies()
