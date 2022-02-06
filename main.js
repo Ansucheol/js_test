@@ -292,5 +292,148 @@ function toObject(a,b,c){
 
 }
 console.log(toObject(...fruit))
+//--------------------------------------------------------------------- 2/6일 START
+*/
+/*
+//데이터 불변성(Immutablicty)
+//원시 데이터 : String, Number, Boolean, undefined, null
+//참조형 데이터 : Object, Array, Function
+
+let a =1
+let b =4
+console.log(a,b, a===b)
+b=a
+console.log(a,b, a===b)
+a =7
+console.log(a,b, a===b)
+let c =1
+console.log(b,c, b===c)
 */
 
+// 얕은복사(Shallow copy) , 깊은복사( Deep copy)
+/*
+const user = {
+    name: "Heropy",
+    age: 85,
+    emails: ['thesecon@gmail.com']
+}
+
+//데이터 복사하는법
+//assign 메서드 : Object.assign({},user)
+//전개 데이터 : const copyUsser = {...user}
+//대상객체 , 출처객체
+
+/*
+const copyUser = _.cloneDeep(user) //깊은복사
+console.log(copyUser === user)
+
+
+
+user.age =22
+console.log('user',user)
+console.log('copyUser', copyUser)
+
+console.log('------')
+console.log('------')
+
+user.emails.push('neo@zillinks.com') // 제일 뒷 쪽에 밀어넣는다
+console.log(user.emails === copyUser.emails)
+
+console.log('user', user)
+console.log('copyUSer',copyUser)
+
+*/
+//-----------------------------------------------------------------------
+
+
+//import
+/*
+import _ from 'lodash' //From `node_modules` !
+import checkType from './getType' //getType.js
+// import {random ,user as heropy}from'./getRandom' //getRamdom.js
+import * as R from './getRandom'
+
+console.log(_.camelCase('the hello world'))
+console.log(checkType([1 , 2, 3]))
+// console.log(random(), random())
+console.log(R)
+*/
+//--------------------------------------------------------------------------
+
+//uniq
+//lodash!!!
+/*
+import _ from 'lodash'
+
+const usersA =[
+    { userId: 1, name: 'Heropy'},
+    { userId: 2, name: 'Neo'}
+]
+
+const usersB =[
+    { userId: 1, name: 'Heropy'},
+    { userId: 3, name: 'Amy'}
+]
+
+
+const usersC = usersA.concat(usersB)//concat 두개의 배열 데이터를 하나로 합침
+console.log('concat', usersC)
+console.log('uniqBy',_.uniqBy(usersC,'userId'))//uniqBy 중복되는거 제거(배열 데이터 하나일때 사용)
+
+const usersD = _.unionBy(usersA, usersB, 'userId')
+console.log('unionBy', usersD) //unionBy( 배열데이터 여러개일때 사용)
+*/
+//-----------------------------------------------------------------------------
+/*
+//json : javScript Object Notation (자바스크립트 데이터를 표현하는 포맷)
+//비동기 브라우저/서버 통신(AJAX)
+// 인터넷에서 자료를 주고/ 받을때
+//JSON의 공식 인터넷 미디어 타입은 application/json이며, JSON의 파일 확장자는 .json이다.
+//json은 하나의 "문자데이터이다"
+
+
+
+//자바스크립트의 객체 표기법
+import myData from './myData.json'
+
+console.log(myData)
+
+const user = {
+    name: 'HEROPY',
+    age: 85,
+    emails: [
+        'thesecon@gmail.com',
+        'neo@zillinks.com'
+    ]
+}
+
+console.log('user',user)
+
+const str = JSON.stringify(user) //JSON(전역객체) stringify (문자데이터화)
+console.log('str' ,str)
+console.log(typeof str)
+
+const obj = JSON.parse(str)
+console.log('obj', obj)
+*/
+//----------------------------------------------------------
+
+//stroge(데이터 저장소)
+//localStorage의 데이터는 만료되지 않고 sessionStorage의 데이터는 페이지 세션이 끝날 때, 
+//즉 페이지를 닫을 때 사라지는 점이 다릅니다.
+
+const user = {
+    name: 'HEROPY',
+    age: 85,
+    emails: [
+        'thesecon@gmail.com',
+        'neo@zillinks.com'
+    ]
+}
+
+const str =localStorage.getItem('user')
+const obj= JSON.parse(str)
+obj.age =22
+console.log(obj)
+
+localStorage.setItem('user',JSON.stringify(obj))
